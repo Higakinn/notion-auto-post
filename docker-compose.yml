@@ -7,3 +7,5 @@ services:
     tty: true
     env_file:
       - .env
+    entrypoint: >
+      /bin/sh -c "sleep 86400"
