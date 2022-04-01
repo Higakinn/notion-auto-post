@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net/http"
 
-	// "github.com/pkg/errors"
 	"github.com/higakinn/notion-auto-post/lib"
 	"github.com/higakinn/notion-auto-post/domain/model"
 	"github.com/higakinn/notion-auto-post/domain/repository"
@@ -19,7 +18,7 @@ type ItemRepository struct {
 	notionClient lib.NotionClient
 }
 
-func NewItemRepository() repository.IItemRepository {
+func NewItemRepository() repository.ItemRepository {
 	accessToken := os.Getenv("NOTION_ACCESS_TOKEN")
 	nClient := lib.NewNotionClient(accessToken)
 	return &ItemRepository{

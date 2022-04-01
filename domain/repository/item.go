@@ -3,6 +3,6 @@ package repository
 import (
 	"github.com/higakinn/notion-auto-post/domain/model"
 ) 
-type IItemRepository interface {
+type ItemRepository interface {
   FindAll() ([]model.Item, error)
 }
