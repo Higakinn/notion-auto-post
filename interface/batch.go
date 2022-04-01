@@ -32,12 +32,10 @@ func (r *Runner) Execute() {
 		qBody += "## " + p.Title + "\n\n" + p.Url + "\n\n"
 	}
 
-	fmt.Println(qBody)
 	tags := []lib.QiitaTag{ {"Qiita", [] string{}} }
 	if err := qClient.UpdateItem(os.Getenv("QIITA_ARTICLE_ID"), "test", qBody, tags); err != nil {
 			errors.WithStack(err)
 	}
-	// fmt.Println(pages)
 
 	fmt.Println("batch end")
 

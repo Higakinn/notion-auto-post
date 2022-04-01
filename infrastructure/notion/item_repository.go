@@ -2,7 +2,6 @@ package notion
 
 import (
 	"os"
-	"fmt"
 	"net/http"
 
 	"github.com/higakinn/notion-auto-post/lib"
@@ -30,7 +29,7 @@ func (r *ItemRepository) FindAll() ([]model.Item, error) {
 	dbId := os.Getenv("NOTION_DATABASE_ID")
 	
 	dbs, _ := r.notionClient.QueryDatabases(dbId)
-	fmt.Println(dbs)
+
 	items := []model.Item{}
 	for _,v := range dbs.Results {
 		item := model.Item{

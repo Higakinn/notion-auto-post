@@ -25,7 +25,6 @@ type QiitaClient struct {
 
 func NewQiitaClient() *QiitaClient {
 	accessToken := os.Getenv("QIITA_ACCESS_TOKEN")
-	fmt.Println(accessToken)
 	return &QiitaClient{
 		accessToken: accessToken,
 		httpAPI:     http.DefaultClient,
@@ -56,7 +55,7 @@ func (c *QiitaClient) UpdateItem(id, title, body string, tags []QiitaTag) error 
 		return errors.WithStack(err)
 	}
 	defer resp.Body.Close()
-	fmt.Println(resp.StatusCode)
+	
 	if resp.StatusCode != http.StatusOK {
 		b, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
