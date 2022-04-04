@@ -29,11 +29,12 @@ func (r *Runner) Execute() {
 
 	qBody := ""
 	for _,p := range pages {
+		fmt.Println(p)
 		qBody += "## " + p.Title + "\n\n" + p.Url + "\n\n"
 	}
 
 	tags := []lib.QiitaTag{ {"Qiita", [] string{}} }
-	if err := qClient.UpdateItem(os.Getenv("QIITA_ARTICLE_ID"), "test", qBody, tags); err != nil {
+	if err := qClient.UpdateItem(os.Getenv("QIITA_ARTICLE_ID"), "読みたい記事", qBody, tags); err != nil {
 			errors.WithStack(err)
 	}
 

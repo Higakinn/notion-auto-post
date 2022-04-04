@@ -1,8 +1,9 @@
 name: notify github trend
 
-on: #push
+on:
+  #push
   schedule:
-    - cron: "0 0 * * *" # 毎日8時間毎に定期実行(時間がutcなので注意)
+     - cron: "0 0 * * *" # 毎日8時間毎に定期実行(時間がutcなので注意)
 
 env:
   QIITA_ACCESS_TOKEN: ${{ secrets.QIITA_ACCESS_TOKEN }}
@@ -34,5 +35,6 @@ jobs:
           -e "s|__QIITA_ARTICLE_ID__|${QIITA_ARTICLE_ID}|g"
           -e "s|__NOTION_ACCESS_TOKEN__|${NOTION_ACCESS_TOKEN}|g"
           -e "s|__NOTION_DATABASE_ID__|${NOTION_DATABASE_ID}|g" .env.example > .env &&
+          cat .env &&
           docker build -t batch:local . &&
           docker run --rm --env-file=.env batch:local
